@@ -1,0 +1,36 @@
+<nav class="navbar navbar-light h-16 shadow-lg flex items-center justify-between">
+  <div class="flex text-red-500 max-w-7xl mx-auto w-full px-6 justify-between">
+    <a class="navbar-brand text-xl font-semibold" href="/">conduit</a>
+    <ul class="flex gap-x-4 list-none" [ngClass]="{ hidden: isAuthenticated() }">
+      <li class="nav-item">
+        <!-- Add "active" class when you're on that page" -->
+        <a class="nav-link active" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Sign in</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/register">Sign up</a>
+      </li>
+    </ul>
+
+    <ul class="flex gap-x-4 list-none" [ngClass]="{ hidden: !isAuthenticated() }">
+      <li class="nav-item">
+        <!-- Add "active" class when you're on that page" -->
+        <a class="nav-link active" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/editor"> <i class="ion-compose"></i>&nbsp;New Article </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/settings"> <i class="ion-gear-a"></i>&nbsp;Settings </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/profile/eric-simons">
+          <img src="" class="user-pic" />
+          Eric Simons
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
