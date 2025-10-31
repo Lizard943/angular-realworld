@@ -1,7 +1,7 @@
 <nav class="navbar navbar-light h-16 shadow-lg flex items-center justify-between">
   <div class="flex text-red-500 max-w-7xl mx-auto w-full px-6 justify-between">
     <a class="navbar-brand text-xl font-semibold" href="/">conduit</a>
-    <ul class="flex gap-x-4 list-none" [ngClass]="{ hidden: isAuthenticated() }">
+    <ul *ifAuthenticated="false" class="flex gap-x-4 list-none">
       <li class="nav-item">
         <!-- Add "active" class when you're on that page" -->
         <a class="nav-link active" href="/">Home</a>
@@ -14,7 +14,7 @@
       </li>
     </ul>
 
-    <ul class="flex gap-x-4 list-none" [ngClass]="{ hidden: !isAuthenticated() }">
+    <ul *ifAuthenticated="true" class="flex gap-x-4 list-none">
       <li class="nav-item">
         <!-- Add "active" class when you're on that page" -->
         <a class="nav-link active" href="/">Home</a>
@@ -28,7 +28,9 @@
       <li class="nav-item">
         <a class="nav-link" href="/profile/eric-simons">
           <img src="" class="user-pic" />
-          Eric Simons
+          @if (currentUser != null) {
+          {{ currentUser.username }}
+          }
         </a>
       </li>
     </ul>
