@@ -16,6 +16,13 @@ export class HttpService {
       },
       timeout: 5000,
     });
+    this.client.interceptors.request.use((config) => {
+      const token = localStorage.getItem('jwtToken');
+      if (token) {
+        config.headers.set('Authorization', `Bearer ${token}`);
+      }
+      return config;
+    });
     this.client.interceptors.response.use(
       (response) => {
         return response.data;
@@ -45,6 +52,22 @@ export class HttpService {
     config?: AxiosRequestConfig
   ): Promise<ApiSuccessResponse<T>> {
     const response = (await this.client.post<T>(url, body, config)) as T;
+    const data: ApiSuccessResponse<T> = { success: true, data: response };
+    return data;
+  }
+
+  async delete<T>(url: string, config?: AxiosRequestConfig): Promise<ApiSuccessResponse<T>> {
+    const response = (await this.client.delete<T>(url, config)) as T;
+    const data: ApiSuccessResponse<T> = { success: true, data: response };
+    return data;
+  }
+
+  async put<T>(
+    url: string,
+    body?: any,
+    config?: AxiosRequestConfig
+  ): Promise<ApiSuccessResponse<T>> {
+    const response = (await this.client.put<T>(url, body, config)) as T;
     const data: ApiSuccessResponse<T> = { success: true, data: response };
     return data;
   }

@@ -6,10 +6,11 @@
         <p class="text-xs-center">
           <a href="/register">Need an account?</a>
         </p>
-
+        @if(error()){
         <ul class="error-messages">
           <li>That email is already taken</li>
         </ul>
+        }
 
         <form [formGroup]="loginForm">
           <fieldset class="form-group">
@@ -28,6 +29,16 @@
               formControlName="password"
             />
           </fieldset>
+          @if (this.loginForm.contains('username')) {
+          <fieldset class="form-group">
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              placeholder="Username"
+              formControlName="username"
+            />
+          </fieldset>
+          }
           <button class="btn btn-lg btn-primary pull-xs-right" (click)="onSubmit()">Sign in</button>
         </form>
       </div>

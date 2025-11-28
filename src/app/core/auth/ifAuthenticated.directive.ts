@@ -6,7 +6,7 @@ import { Input } from '@angular/core';
   selector: '[ifAuthenticated]',
   standalone: true,
 })
-export class IfAuthenticatedDirective<T> {
+export class IfAuthenticatedDirective<T> implements OnInit {
   @Input() ifAuthenticated = true;
   constructor(
     private readonly userService: UserService,
@@ -23,4 +23,6 @@ export class IfAuthenticatedDirective<T> {
       }
     });
   }
+
+  ngOnInit(): void {}
 }
