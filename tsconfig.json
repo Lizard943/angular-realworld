@@ -16,6 +16,7 @@
     "module": "preserve"
   },
   "angularCompilerOptions": {
+    "enableExperimentalFeatures": true,
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,

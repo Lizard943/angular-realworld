@@ -2,3 +2,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+app-article-list,
+app-article-preview,
+app-skeleton {
+  box-sizing: border-box;
+  display: block;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: none;
+}
